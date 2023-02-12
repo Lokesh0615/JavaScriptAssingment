@@ -194,28 +194,26 @@ submitBtn.addEventListener("click", (event) => {
     } else {
 
         console.log("elllleee");
-        let un="undefiend";
+        let un = "undefiend";
         // pushing data to localstorage
         bookStorage = JSON.parse(localStorage.getItem("BookStore")) ? JSON.parse(localStorage.getItem("BookStore")) : [];
         // avoid same id 
-        if (document.getElementById("editBtn-" + `${bookID.value}`)!=null) {
+        if (document.getElementById("editBtn-" + `${bookID.value}`) != null) {
             // console.log(document.querySelector("editBtn-" + bookID.value).length);
             addBookToStorage(bookID.value, bookName.value, author.value, category.value, un, un, price.value)
-            
+
             // localStorage.setItem("BookStore", JSON.stringify(bookStorage));
-            // console.log("buttonexist");
+            console.log("buttonexist");
         }
         else {
-            console.log("eeee");
-            if(bookStorage.some((BID) => { return BID.BookID == bookID.value })) {
+            if (bookStorage.some((BID) => { return BID.BookID == bookID.value })) {
                 event.preventDefault();
                 bookID.style.borderColor = "red";
                 bookIDAlert.innerText = "BookID is a Already Exist";
                 bookIDAlert.style.display = "block";
-                console.log("booo");
 
             }
-            else{
+            else {
                 addBookToStorage(bookID.value, bookName.value, author.value, category.value, un, un, price.value)
                 console.log("bookid exist");
             }
@@ -224,12 +222,31 @@ submitBtn.addEventListener("click", (event) => {
 
 });
 
+
 // push to local storage
 function addBookToStorage(fbookID, fbookName, fauthor, fcategory, fun, fun1, fprice) {
-    console.log("lokhj");
-    if(document.getElementById("editBtn-" + `${fbookID}`)!=null){
-        console.log("id already");
-    }else{
+
+    if (document.getElementById("editBtn-" + `${fbookID}`) != null) {
+        let findIndexOfElement = JSON.parse(localStorage.getItem("BookStore"));
+        for (let x of Object.values(findIndexOfElement)) {
+            if (x.BookID == fbookID) {
+                let indexUpadte = findIndexOfElement.indexOf(x);
+                bookStorage.splice(indexUpadte, 1, {
+                    BookID: fbookID,
+                    BookName: fbookName,
+                    Author: fauthor,
+                    Category: fcategory,
+                    // SubCategory: `${subCategory.value}`,
+                    // status: `${sts.value}`,
+                    SubCategory: fun,
+                    status: fun1,
+                    Price: fprice
+                })
+                localStorage.setItem("BookStore", JSON.stringify(bookStorage));
+            }
+        }
+
+    } else {
         bookStorage.push({
 
             BookID: fbookID,
@@ -245,12 +262,12 @@ function addBookToStorage(fbookID, fbookName, fauthor, fcategory, fun, fun1, fpr
         localStorage.setItem("BookStore", JSON.stringify(bookStorage));
     }
 
-    
-    
-    
+
+
+
 }
 
-console.log(bookStorage);
+
 // false local storage
 let getLocalStorage = JSON.parse(localStorage.getItem("BookStore"));
 function tableData() {
@@ -282,12 +299,6 @@ function tableData() {
                 tableEditBtn.addEventListener("click", function () {
                     document.getElementsByClassName("formMain")[0].style.display = "block";
                     let b = getLocalStorage.indexOf(x);
-                    // bookID = document.getElementById("bookID");
-                    // let bookName = document.getElementById("bookName");
-                    // let author = document.getElementById("author");
-                    // let category = document.getElementById("category");
-                    // let subCategory = document.querySelector("subCategory");
-                    // let sts = document.querySelectorAll("input[name=status]");
                     bookID.value = x.BookID;
                     bookName.value = x.BookName
                     author.value = x.Author;
@@ -325,7 +336,7 @@ function tableData() {
 }
 tableData();
 
-console.log(document.getElementById("editBtn-1")!=null);
+// console.log(document.getElementById("editBtn-1")!=null);
 
 
 
