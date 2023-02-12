@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+#bookCollectionDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid red;
+    border-radius: 10px;
+
+}
+
+/* 130px, 195px */
+.content {
+    width:clamp(130px, 23%, 195px);
+    margin: 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(181, 54, 103);
+    box-shadow: 4px 4px 4px rgb(70, 63, 63);
+}
+
+.imageContainer {
+    margin: 5px;
+    width: 95%;
+    border-radius: 10px;
+}
+
+.imageContainer img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    text-align: center;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 3px;
+    background-color: rgb(54, 172, 181);
+    /* text-overflow: clip; */
+}
+
+.bookIDStore, .bookPriceStore{
+    font-size: large;
+    margin: 4px 6px;
+    width: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: "----";
+    /* white-space: nowrap; */
+    
+}

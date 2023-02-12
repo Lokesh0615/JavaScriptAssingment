@@ -150,8 +150,11 @@ addNewBookBtn.addEventListener("click", () => {
 
 
 submitBtn.addEventListener("click", (event) => {
+
     if (/[0-9]/.test(bookID.value) == false || /[0-9]/.test(price.value) == false || bookName.value == "" || author.value == "" || category.value == "" || bookID.value == "" || price.value == "") {
         event.preventDefault();
+
+
         if (bookName.value == "") {
             bookName.style.borderColor = "red";
             bookNameAlert.style.display = "block";
@@ -194,7 +197,7 @@ submitBtn.addEventListener("click", (event) => {
     } else {
 
         console.log("elllleee");
-        let un = "undefiend";
+        let un = "undefiend value";
         // pushing data to localstorage
         bookStorage = JSON.parse(localStorage.getItem("BookStore")) ? JSON.parse(localStorage.getItem("BookStore")) : [];
         // avoid same id 
@@ -336,10 +339,6 @@ function tableData() {
 }
 tableData();
 
-// console.log(document.getElementById("editBtn-1")!=null);
-
-
-
 // original local storage
 
 // local storage to table
@@ -461,20 +460,25 @@ function hideForm() {
 
 // console.log(sts);
 
+
 function radioBtnValidate() {
     let valid = false;
-    let l = radioBtn.length;
-    for (let item of radioBtn) {
+    let l = sts.length;
+    for (let item of sts) {
         if (item.cheked) {
             valid = true;
+
             break;
         }
     }
     if (!valid) {
+        console.log("hhhhhh");
         // sts.style.borderColor = "red";
         // statusAlert.style.display = "block";
+    } else {
+        console.log("kkkkkk");
     }
-    return valid;
+    // return valid;
 }
 
 function ValidateChange() {
@@ -503,3 +507,6 @@ function ValidateChange() {
     }
 
 }
+
+
+
