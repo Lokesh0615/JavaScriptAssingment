@@ -1,0 +1,61 @@
+*{
+    box-sizing: border-box;
+}
+.pageHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px 20px;
+}
+.homeIcon{
+    width: clamp(20px, 14vw, 100px);
+}
+.homeIcon img{
+    width: 100%;
+}
+.homeWebName{
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 6vw;
+
+}
+.homeWebName p{
+    font-size: clamp(20px, 4vw, 50px);
+}
+.pageImage{
+    width: 100%;
+    padding: 4vw;
+}
+.pageImage img{
+    width: 100%;
+}
+.pageLinks{
+   padding: 20px;
+   display: flex;
+   justify-content: space-between;
+    
+}
+.pageLinks a{
+    display: inline-block;
+    width: 40%;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    padding: 30px;
+    border: 1.5px solid black;
+}
+.pageFooter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    margin: 20px;
+    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq5zFZHrRBrJBflAFCke5kmLaWwS3ylebgzQ&usqp=CAU")  no-repeat center ;
+    background-size: cover;
+}
+.meadiaIconsWebsite i{
+    color: whitesmoke;
+    font-size: 30px;
+    margin: 10px;
+}

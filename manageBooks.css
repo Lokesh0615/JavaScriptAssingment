@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+}
+
+.pageMainButtons{
+    margin: auto;
+    text-align: right;
+    margin-right: 5%;
+}
+#searchText{
+    border-radius: 5px;
+    padding: 10px;
+}
+.pageMainButtons>button{
+    background-color:  rgb(1, 162, 1);
+    border-radius: 5px;
+    padding: 10px;
+    /* border: 1px solid black; */
+}
+.pageMainButtons>button:hover{
+    background-color:  rgb(1, 162, 1, 0.8);
+}
+.formMain {
+    /* position: relative; */
+    margin: auto;
+    text-align: right;
+    width: 350px;
+    display: none;
+}
+
+
+fieldset {
+    /* background-color: rgb(65, 206, 206); */
+    background: linear-gradient(to bottom left, rgb(241, 220, 104), rgb(190, 34, 138));
+
+}
+
+#legendText {
+    text-align: left;
+    color: rgb(6, 40, 84);
+    font-size: large;
+    background-color: rgb(147, 169, 189);
+}
+#cancelBtn{
+    display: inline-block;
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin: 2px 5px;
+    border-radius: 5px;
+}
+#cancelBtn:hover{
+    background-color: rgb(242, 41, 41);
+}
+
+
+.formContent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    width: 100%;
+}
+
+.formContent label,
+.formContent input {
+
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin: 2px 5px;
+    border-radius: 5px;
+}
+
+.formContent button {
+    width: 40%;
+    padding: 8px;
+    margin: 2px 5px;
+    border-radius: 5px;
+    background-color: rgba(10, 66, 129, 0.231);
+    border: 1.5px solid black;
+    cursor: pointer;
+}
+
+.formContent button:hover {
+    background-color: rgb(9, 148, 16, 0.9);
+
+}
+
+.Alert {
+    display: none;
+    color: red;
+    height: 10px;
+    margin: -4px 3px 15px 0px;
+}
+
+/* table */
+.tableData{
+    /* border: 1px solid red; */
+    margin: auto;
+    border-collapse: collapse;
+    width:90%;
+    text-align: center;
+   
+}
+.tableHead,tr, td{
+    border: 1.5px solid black;
+    overflow-x: auto;
+}
+.tableHead{
+    background-color: rgba(0, 171, 194, 0.922);
+}
+/* tr:nth-child(even){
+    background-color: rgb(147, 211, 207);
+} */
+.editBtn, .deleteBtn{
+    border-radius: 5px;
+    background-color: rgb(217, 53, 12);
+    border: 1.5px solid black;
+    cursor: pointer;
+}
+.editBtn:hover, .deleteBtn:hover{
+    background-color: rgba(48, 223, 17, 0.6);
+}
+
+#noData{
+    display: ruby-text;
+    /* width: 100%; */
+    /* width: 90vw; */
+    /* justify-content: center; */
+    text-align: center;
+}
