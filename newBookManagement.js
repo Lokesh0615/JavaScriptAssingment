@@ -4,15 +4,12 @@ let bookName = document.getElementById("bookName");
 let author = document.getElementById("author");
 let category = document.getElementById("category");
 let subCategory = document.querySelector("subCategory");
-let sts = document.querySelectorAll("input[name='status']");
-
-
+let sts = document.querySelectorAll("input[name=status]");
 
 
 let price = document.getElementById("price");
 
 let ipt = document.querySelectorAll("input, datalist");
-// console.log(ipt.length);
 
 // form
 let BookingForm = document.getElementById("BookingForm");
@@ -26,6 +23,9 @@ let cancelBtn = document.getElementById("cancelBtn");
 let addNewBookBtn = document.getElementById("addBtn");
 let resetBtn = document.getElementById("resetBtn");
 let submitBtn = document.getElementById("submitBtn");
+// radi button
+let radioBtn = document.querySelectorAll("input[type=radio]");
+
 let editBtn = document.getElementsByClassName("editBtn");
 let deleteBtn = document.getElementsByClassName("deleteBtn");
 // search button
@@ -35,31 +35,46 @@ let searchText = document.getElementById("searchText");
 // to check bookid input file is disabled or not
 var bookIDInputDisabled = 0;
 var sampleText="";
-searchText.addEventListener("change", searchData);
-function searchData() {
-    let searchDispaly = false;
-    for (let x of Object.values(getLocalStorage)) {
-        if (x.BookID != searchText.value) {
-            document.getElementById(`tr-${x.BookID}`).style.display = "none";
+// searchText.addEventListener("focusin", searchData);
+searchText.addEventListener("keyup", searchData);
 
+searchText.addEventListener("change", clearSearchFields);
+function searchData() {
+    // let searchDispaly=false;
+    let searchDispaly=0;
+    for (let x of Object.values(getLocalStorage)) {
+        if (x.BookID == searchText.value ) {
+            document.getElementById(`tr-${x.BookID}`).style.display = "";
+            addNewBookBtn.disabled = true;
+            // searchText.value="";
+            searchDispaly--;
         }
         else {
-            document.getElementById(`tr-${x.BookID}`).style.display = "";
-            searchDispaly = true;
+            document.getElementById(`tr-${x.BookID}`).style.display = "none";
+           
+            searchDispaly++;
+           
         }
     }
+    // searchText.value="";
 
-    // if (!searchDispaly) {
-    //     noData.style.display = "";
-    //     noData.innerHTML = "no data is available";
-    // }
+    if (searchDispaly==getLocalStorage.length) {
+       
+        noData.style.display = "";
+        noData.innerHTML = "no data is available";
+    }else{
+        // addNewBookBtn.disabled = false;
+        noData.style.display = "none";
+        // noData.innerHTML = "no data is available";
+    }
     // searchText.value = "";
-    addNewBookBtn.disabled = true;
+    // addNewBookBtn.disabled = true;
     // document.querySelector("body").addEventListener("click", () => {
     //     document.location.reload(true)
     // })
 
 }
+
 
 // let clearSearch = document.getElementById("clearSearch");
 // clearSearch.addEventListener("focus", clearSearchFields);
@@ -69,10 +84,9 @@ function clearSearchFields() {
     }
     addNewBookBtn.disabled = false;
     noData.style.display = "none";
+     searchText.value="";
 };
 
-// radioooo
-// submitBtn.addEventListener("click", find);
 
 // disable buttons
 
@@ -99,9 +113,6 @@ function enable() {
         deleteBtn[i].disabled = false;
     }
 }
-// wind
-
-
 
 // input fileds alerts
 let bookIDAlert = document.getElementById("bookIDAlert");
@@ -120,7 +131,7 @@ category.addEventListener("keydown", ValidateChange);
 // sts.addEventListener("keydown", ValidateChange);
 price.addEventListener("keydown", ValidateChange);
 
-resetBtn.addEventListener("click",reset);
+resetBtn.addEventListener("click", hideForm);
 cancelBtn.addEventListener("click", hideForm);
 addNewBookBtn.addEventListener("click", hideForm);
 
@@ -138,7 +149,6 @@ addNewBookBtn.addEventListener("click", hideForm);
 
 // creating array for localstorage
 var bookStorage = new Array();
-
 // submitBtn.addEventListener("click", (event) => {
 
 //     let selected = document.querySelector('input[name="status"]:checked');
@@ -217,6 +227,7 @@ var bookStorage = new Array();
 //     }
 
 // });
+
 
 addNewBookBtn.addEventListener("click", () => {
     document.getElementsByClassName("formMain")[0].style.display = "block";
@@ -365,9 +376,6 @@ function addBookToStorage(fbookID, fbookName, fauthor, fcategory, fun, fun1, fpr
 
 
 // false local storage
-// edit function
-// delete function
-
 let getLocalStorage = JSON.parse(localStorage.getItem("BookStore"));
 function tableData() {
 
@@ -414,10 +422,7 @@ function tableData() {
                     bookIDInputDisabled = 1;
                     sampleText=x.BookID;
                     disable()
-
                 });
-
-
 
                 // deleting the row using delete button
                 const dbtn = "deleteBtn-" + x.BookID;
@@ -443,6 +448,14 @@ function tableData() {
 }
 tableData();
 
+// console.log(document.getElementById("editBtn-1")!=null);
+
+
+
+// original local storage
+
+// local storage to table
+// let getLocalStorage = JSON.parse(localStorage.getItem("BookStore"));
 // function tableData() {
 
 //     // if localstorgae is not null then only perform
@@ -515,56 +528,81 @@ tableData();
 //     }
 // }
 // tableData();
-console.log(getLocalStorage.length);
+
 function noDataAvailable() {
-    if (getLocalStorage.length < 1) {
+    if (getLocalStorage.length == 0) {
         noData.innerHTML = "no data is available";
         noData.style.display = "";
     }
 };
 noDataAvailable();
-// console.log(ipt);
-console.log(bookIDInputDisabled);
-console.log(typeof (ipt));
 
-function reset(event){
-    document.getElementsByClassName("formMain")[0].style.display = "";
-   event.preventDefault();
-    // if( bookIDInputDisabled!=0){
 
-    // }else{
-    //     bookID.value = "";
-    //     bookID.style.borderColor = "black";
-    // }
-    
-   
 
-}
-function hideForm() {
-    if (this==cancelBtn) {
+function hideForm(event) {
+    if (this == cancelBtn) {
         document.getElementsByClassName("formMain")[0].style.display = "none";
+        bookIDInputDisabled=0;
     }
-   
     ipt.forEach(x => {
-        if( x.id!="bookID" ){
+        if (x.id == "bookID" && bookIDInputDisabled==1) {
+            event.preventDefault();
+            x.value=sampleText;
+        } else {
             x.value = "";
             x.style.borderColor = "black";
-
         }
 
     });
+    // if( bookIDInputDisabled==1){
+    //     bookIDInputDisabled=0;
+    // }
     let clear = document.getElementsByClassName("clearChecked")
     for (let i of clear) {
         i.checked = false;
     }
+
     let Alert = document.getElementsByClassName("Alert");
     for (let x of Alert) {
         x.style.display = "none";
     }
-   
-    } 
+}
 
 
+
+
+// addNewBookBtn.addEventListener("click", clearFields);
+
+// function clearFields(){
+//     ipt.forEach(x => {
+//         x.value = "";
+//         x.style.borderColor = "black";
+//     });
+//     // document.querySelectorAll("input").style.borderColor="black";
+//     let Alert = document.getElementsByClassName("Alert");
+//     for (let x of Alert) {
+//         x.style.display = "none";
+//     }
+// }
+
+
+// console.log(sts);
+
+function radioBtnValidate() {
+    let valid = false;
+    let l = radioBtn.length;
+    for (let item of radioBtn) {
+        if (item.cheked) {
+            valid = true;
+            break;
+        }
+    }
+    if (!valid) {
+        // sts.style.borderColor = "red";
+        // statusAlert.style.display = "block";
+    }
+    return valid;
+}
 
 function ValidateChange() {
     if (this.style.borderColor == "red") {
@@ -592,6 +630,3 @@ function ValidateChange() {
     }
 
 }
-
-
-

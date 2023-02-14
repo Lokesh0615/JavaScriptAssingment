@@ -1,31 +1,127 @@
 * {
     box-sizing: border-box;
 }
+body {
+    background: linear-gradient(to left top, rgb(221, 109, 230), rgb(73, 120, 191), rgb(35, 152, 206));
+    min-height: 100vh;
+    max-height: max-content;
+}
+.pageHeader {
+    display: flex;
+    /* width: 100%; */
+    justify-content: space-between;
+    padding: 5px;
+    background-color: rgb(72, 103, 188);
+    /* background-color: rgb(52, 220, 52); */
 
+}
+
+.homeIcon {
+    width: clamp(15px, 15vw, 80px);
+    height: clamp(15px, 15vw, 80px);
+    /* background-color: rgb(209, 180, 87); */
+    border-radius: 5px;
+
+
+}
+
+.homeIcon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: fill;
+}
+
+.homeWebName {
+    width: 75vw;
+    height: clamp(20px, 12vw, 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 6vw;
+    /* background-color: rgb(209, 180, 87),rgb(43, 183, 21); */
+
+
+}
+
+.homeWebName p {
+    font-size: clamp(20px, 5vw, 80px);
+}
+
+.pageFooter {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq5zFZHrRBrJBflAFCke5kmLaWwS3ylebgzQ&usqp=CAU")  no-repeat center ; */
+    background: rgb(124, 164, 181);
+    background-size: cover;
+    /* position: absolute; */
+    /* bottom: 0px; */
+}
+
+.contactWebsite {
+    display: flex;
+    justify-content: space-evenly;
+    /* font-size: clamp(15px, 4vw, 20px); */
+    /* margin: clamp(3px, 2vw, 20px); */
+}
+
+.contactWebsite p {
+    margin: clamp(3px, 2vw, 20px);
+
+}
+
+.meadiaIconsWebsite i {
+    color: whitesmoke;
+    font-size: clamp(15px, 4vw, 20px);
+    margin: clamp(3px, 0.5vw, 10px);
+}
+
+
+/* manage page */
 .pageMainButtons{
-    margin: auto;
-    text-align: right;
-    margin-right: 5%;
+    margin:5px ;
+    text-align: center;
+    /* margin-right: 2.5%; */
+    
 }
 #searchText{
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    min-width:100px;
 }
-.pageMainButtons>button{
-    background-color:  rgb(1, 162, 1);
+#addBtn{
+    background-color:  rgb(11, 78, 103);
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.861);
     /* border: 1px solid black; */
+    border: none;
+    min-width:100px;
 }
-.pageMainButtons>button:hover{
-    background-color:  rgb(1, 162, 1, 0.8);
+#addBtn:hover{
+    background-color:  rgba(162, 1, 138, 0.8);
+}
+
+#formAlign{
+    width: 100%;
+    /* min-height: 60vh; */
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
 }
 .formMain {
-    /* position: relative; */
     margin: auto;
+    position: absolute;
+    /* left: 33%; */
+    /* right: 35%; */
     text-align: right;
     width: 350px;
     display: none;
+    z-index: 2;
 }
 
 
@@ -44,10 +140,20 @@ fieldset {
 #cancelBtn{
     display: inline-block;
     border: 1px solid black;
+    border: none;
+    margin: 2px ;
+    border-radius: 5px;
+    position: relative;
+    top: -10px;
+    right: -8px;
+}
+#tableDataDisplayBtn{
+    /* display: inline-block; */
+    border: 1px solid black;
     padding: 5px 10px;
-    margin: 2px 5px;
     border-radius: 5px;
 }
+
 #cancelBtn:hover{
     background-color: rgb(242, 41, 41);
 }
@@ -56,11 +162,17 @@ fieldset {
 .formContent {
     display: flex;
     flex-wrap: wrap;
-    justify-content: right;
+    /* text-align: left; */
+    justify-content: space-between;
     width: 100%;
 }
+.radioContent{
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    /* text-align: center; */
+}
 
-.formContent label,
 .formContent input {
 
     border: 1px solid black;
@@ -92,38 +204,94 @@ fieldset {
 }
 
 /* table */
+#tableAlign{
+    min-height: 60vh;
+}
+#tableDiv{
+    
+    overflow-x: auto;
+    display: flex;
+    align-items: flex-start;
+}
 .tableData{
     /* border: 1px solid red; */
-    margin: auto;
+    margin: 5px auto 10px;
     border-collapse: collapse;
-    width:90%;
+    width:95%;
+    min-width: 700px;
     text-align: center;
    
 }
-.tableHead,tr, td{
+
+th,tr, td{
     border: 1.5px solid black;
-    overflow-x: auto;
+    
 }
 .tableHead{
-    background-color: rgba(0, 171, 194, 0.922);
+    background-color: rgb(0, 171, 194);
+    
 }
-/* tr:nth-child(even){
-    background-color: rgb(147, 211, 207);
-} */
+
+
+th,td{
+    height: 35px;
+    padding: 0px 3px;
+    text-align: center;
+    
+    /* paddin; */
+}
+tr:nth-child(even){
+    background-color: rgba(245, 233, 233,0.6);
+}
 .editBtn, .deleteBtn{
-    border-radius: 5px;
-    background-color: rgb(217, 53, 12);
-    border: 1.5px solid black;
-    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: clamp(0px, 0.9vw, 25px);
+    margin-right: clamp(0px, 0.9vw, 25px);
+    border: none;
+    background: none;
+
 }
-.editBtn:hover, .deleteBtn:hover{
-    background-color: rgba(48, 223, 17, 0.6);
+
+.editBtn i, .deleteBtn i{
+    font-size: clamp(15px, 4vw, 20px);
+}
+.editBtn:hover{
+    background-color: rgb(44, 227, 227);
+}
+.deleteBtn:hover{
+    background-color: #dc2626;
+
 }
 
 #noData{
     display: ruby-text;
-    /* width: 100%; */
-    /* width: 90vw; */
-    /* justify-content: center; */
     text-align: center;
+}
+
+@media  screen and (max-width: 500px){
+    .pageFooter{
+        flex-direction: column;
+        
+    }
+    .contactWebsite{
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    .meadiaIconsWebsite{
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    #searchText, #searchBtn{
+       width: 28%;
+    }
+     .formMain {
+        width: 90%;
+    } 
 }

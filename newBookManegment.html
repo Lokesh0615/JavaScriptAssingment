@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./collectionBook.css">
+    <script src="https://kit.fontawesome.com/6ac93262d0.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="pageMainButtons">
+        <button id="addBtn">Add New Book</button>
+        <input type="text" name="searchText" id="searchText">
+        <button id="searchBtn">Search</button>
+    </div>
+    <div class="formMain">
+        <form id="BookingForm"    >
+            <fieldset>
+                <legend id="legendText">Registration</legend>
+                <a href="#" id="cancelBtn"><i class="fa-solid fa-xmark"></i></a>
+                <div class="formContent">
+
+                    <label for="bookID">Book ID:</label>
+                    <input type="text" name="bookID" id="bookID">
+                </div>
+                <p class="Alert" id="bookIDAlert">Book ID is requierd</p>
+
+
+                <div class="formContent">
+
+                    <label for="bookName">Book Name:</label>
+                    <input type="text" name="bookName" id="bookName">
+                </div>
+                <p class="Alert" id="bookNameAlert">Book Name is requierd</p>
+
+                <div class="formContent">
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author">
+                </div>
+                <p class="Alert" id="authorAlert">Author Name is requierd</p>
+
+                <div class="formContent">
+                    <label for="category">Category:</label>
+                    <input id="category" list="bookCategories">
+                    <datalist id="bookCategories">
+                        <option value="Eduction">Eduction</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Horror">Horror</option>
+                        <option value="History">History</option>
+                    </datalist>
+                </div>
+                <p class="Alert" id="categoryAlert">Category Name is requierd</p>
+
+                <div class="formContent">
+
+                    <label for="subCategory">Subcategory:</label>
+
+                    <!-- <input type="checkbox" name="subCategory" id="subC1"> -->
+                    <label > <input type="checkbox" name="subCategory" id="subC1" value="NEWS">NEWS</label>
+                    <!-- <input type="checkbox" name="subCategory" id="subC2"> -->
+                    <label > <input type="checkbox" name="subCategory" id="subC2" value="Stories">Stories</label>
+                </div>
+                <div class="formContent fromOptionContent">
+                    <label for="status">Status:</label>
+                    <label ><input type="radio" name="status" id="borrow" value="Borrow">Borrow</label>
+                    <!-- <label for="borrow"></label> -->
+                    <!-- <input type="radio" name="status" id="return"> -->
+                    <label > <input type="radio" name="status" id="return" value="Return">Return</label>
+                </div>
+                <p class="Alert" id="statusAlert">Status should be select</p>
+
+                <div class="formContent">
+                    <label for="price">Price:</label>
+                    <input type="text" name="price" id="price">
+                </div>
+                <p class="Alert" id="priceAlert">Price is a reqiured</p>
+
+                <div class="formContent">
+                    <button type="submit" id="submitBtn">SUBMIT</button>
+                    <button type="reset" id="resetBtn">RESET</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div>
+        <table class="tableData">
+            <tr class="tableHead">
+                <td>Book ID</td>
+                <td>Book Name</td>
+                <td>Author</td>
+                <td>Category</td>
+                <td>Sub-Category</td>
+                <td >Status</td>
+                <td>Price</td>
+                <td>Modification</td>
+            </tr>
+            <tbody id="tableContent" >
+                
+                   <td id="noData" colspan="8"></td>
+                   
+              
+                
+                
+                <!-- <tr>
+                    <td>1234</td>
+                    <td>abcd</td>
+                    <td>looo</td>
+                    <td>history</td>
+                    <td>school</td>
+                    <td>300</td>
+                    <td>borrow</td>
+                    <td>
+                        <div>
+                            <button class="editBtn">edit</button>
+                            <button class="deleteBtn">delete</button>
+                        </div>
+                    </td>
+                </tr> -->
+                
+                
+            </tbody>
+        </table>
+    </div>
+    <script src="./newBookManagement.js"></script>
+</body>
+
+</html>

@@ -12,101 +12,123 @@
 </head>
 
 <body>
-    <div class="pageMainButtons">
-        <button id="addBtn">Add New Book</button>
-        <input type="text" name="searchText" id="searchText">
-        <button id="searchBtn">Search</button>
+    <div class="pageHeader">
+        <div class="homeIcon">
+            <a href="./homePage.html">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9viu0FyG4DX-W8LqXpsRepn2NZOV1Hr6PRw&usqp=CAU"
+                    alt="homeicon">
+            </a>
+        </div>
+        <div class="homeWebName">
+            <p>Book Management System</p>
+        </div>
     </div>
-    <div class="formMain">
-        <form id="BookingForm"    >
-            <fieldset>
-                <legend id="legendText">Registration</legend>
-                <a href="#" id="cancelBtn"><i class="fa-solid fa-xmark"></i></a>
-                <div class="formContent">
 
-                    <label for="bookID">Book ID:</label>
-                    <input type="text" name="bookID" id="bookID">
-                </div>
-                <p class="Alert" id="bookIDAlert">Book ID is requierd</p>
+    <div id="formAlign">
+        <div class="pageMainButtons">
+            <button id="addBtn">Add New Book</button>
+            <input type="text" name="searchText" id="searchText">
+        </div>
+        <!-- <div class="bookManagementAlign"> -->
+        <div class="formMain">
+            <form id="BookingForm">
+                <fieldset>
+                    <a href="#" id="cancelBtn"><i class="fa-solid fa-xmark"></i></a>
+                    <legend id="legendText">Registration</legend>
+
+                    <div class="formContent">
+                        <label for="bookID">Book ID:</label>
+                        <input type="text" name="bookID" id="bookID">
+                    </div>
+                    <p class="Alert" id="bookIDAlert">Book ID is requierd</p>
 
 
-                <div class="formContent">
+                    <div class="formContent">
 
-                    <label for="bookName">Book Name:</label>
-                    <input type="text" name="bookName" id="bookName">
-                </div>
-                <p class="Alert" id="bookNameAlert">Book Name is requierd</p>
+                        <label for="bookName">Book Name:</label>
+                        <input type="text" name="bookName" id="bookName">
+                    </div>
+                    <p class="Alert" id="bookNameAlert">Book Name is requierd</p>
 
-                <div class="formContent">
-                    <label for="author">Author:</label>
-                    <input type="text" name="author" id="author">
-                </div>
-                <p class="Alert" id="authorAlert">Author Name is requierd</p>
+                    <div class="formContent">
+                        <label for="author">Author:</label>
+                        <input type="text" name="author" id="author">
+                    </div>
+                    <p class="Alert" id="authorAlert">Author Name is requierd</p>
 
-                <div class="formContent">
-                    <label for="category">Category:</label>
-                    <input id="category" list="bookCategories">
-                    <datalist id="bookCategories">
-                        <option value="Eduction">Eduction</option>
-                        <option value="Crime">Crime</option>
-                        <option value="Fantasy">Fantasy</option>
-                        <option value="Horror">Horror</option>
-                        <option value="History">History</option>
-                    </datalist>
-                </div>
-                <p class="Alert" id="categoryAlert">Category Name is requierd</p>
+                    <div class="formContent">
+                        <label for="category">Category:</label>
+                        <input id="category" list="bookCategories">
+                        <datalist id="bookCategories">
+                            <option value="Eduction">Eduction</option>
+                            <option value="Crime">Crime</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Horror">Horror</option>
+                            <option value="History">History</option>
+                        </datalist>
+                    </div>
+                    <p class="Alert" id="categoryAlert">Category Name is requierd</p>
 
-                <div class="formContent">
+                    <div class="formContent">
+                        <div>
+                            <label for="subCategory">Subcategory:</label>
+                        </div>
+                        <div class="radioContent">
+                            <label> <input type="checkbox" name="subCategory" id="NEWS" class="checkbox clearChecked"
+                                    value="NEWS">NEWS</label>
+                            <label> <input type="checkbox" name="subCategory" id="Stories" class="checkbox clearChecked"
+                                    value="Stories">Stories</label>
+                        </div>
 
-                    <label for="subCategory">Subcategory:</label>
+                    </div>
+                    <div class="formContent fromOptionContent">
+                        <div><label for="status">Status:</label></div>
+                        <div class="radioContent">
+                            <label><input type="radio" value="Borrow" name="status" id="Borrow"
+                                    class="clearChecked">Borrow</label>
+                            <label> <input type="radio" value="Return" name="status" id="Return"
+                                    class="clearChecked">Return</label>
+                        </div>
 
-                    <!-- <input type="checkbox" name="subCategory" id="subC1"> -->
-                    <label > <input type="checkbox" name="subCategory" id="subC1" value="NEWS">NEWS</label>
-                    <!-- <input type="checkbox" name="subCategory" id="subC2"> -->
-                    <label > <input type="checkbox" name="subCategory" id="subC2" value="Stories">Stories</label>
-                </div>
-                <div class="formContent fromOptionContent">
-                    <label for="status">Status:</label>
-                    <label ><input type="radio" name="status" id="borrow" value="Borrow">Borrow</label>
-                    <!-- <label for="borrow"></label> -->
-                    <!-- <input type="radio" name="status" id="return"> -->
-                    <label > <input type="radio" name="status" id="return" value="Return">Return</label>
-                </div>
-                <p class="Alert" id="statusAlert">Status should be select</p>
+                    </div>
+                    <p class="Alert" id="statusAlert">Status should be select</p>
 
-                <div class="formContent">
-                    <label for="price">Price:</label>
-                    <input type="text" name="price" id="price">
-                </div>
-                <p class="Alert" id="priceAlert">Price is a reqiured</p>
+                    <div class="formContent">
+                        <label for="price">Price:</label>
+                        <input type="text" name="price" id="price">
+                    </div>
+                    <p class="Alert" id="priceAlert">Price is a reqiured</p>
 
-                <div class="formContent">
-                    <button type="submit" id="submitBtn">SUBMIT</button>
-                    <button type="reset" id="resetBtn">RESET</button>
-                </div>
-            </fieldset>
-        </form>
+                    <div class="formContent">
+                        <button type="submit" id="submitBtn">SUBMIT</button>
+                        <button type="reset" id="resetBtn">RESET</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
-    <div>
-        <table class="tableData">
-            <tr class="tableHead">
-                <td>Book ID</td>
-                <td>Book Name</td>
-                <td>Author</td>
-                <td>Category</td>
-                <td>Sub-Category</td>
-                <td >Status</td>
-                <td>Price</td>
-                <td>Modification</td>
-            </tr>
-            <tbody id="tableContent" >
-                
-                   <td id="noData" colspan="8"></td>
-                   
-              
-                
-                
-                <!-- <tr>
+        <div id="tableAlign">
+            <div id="tableDiv">
+                <table class="tableData">
+                    <thead class="tableHead">
+                        <th>Book ID</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Sub-Category</th>
+                        <th>Status</th>
+                        <th>Price</th>
+                        <th>Modification</th>
+
+                    </thead>
+                    <tbody id="tableContent">
+
+                        <td id="noData" colspan="8"></td>
+
+
+
+
+                        <!-- <tr>
                     <td>1234</td>
                     <td>abcd</td>
                     <td>looo</td>
@@ -121,12 +143,28 @@
                         </div>
                     </td>
                 </tr> -->
-                
-                
-            </tbody>
-        </table>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <script src="./bookManagement.js"></script>
+    <div class="pageFooter">
+        <div class="contactWebsite">
+            <p>Book Management System</p>
+            <p><em><i class="fa-regular fa-copyright"></i>All rights are reserved</em></p>
+        </div>
+        <div class="meadiaIconsWebsite">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+
+        <!-- </div> -->
+        <!-- <script src="./bookManagement.js"></script> -->
+        <script src="./newBookManagement.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
 let getLocalStorage=JSON.parse(localStorage.getItem("BookStore"));
 function collectionBook(){
     if(getLocalStorage.length>0){
-        let bookCollectionDiv=document.getElementById("bookCollectionDiv");
+        let bookCollection=document.getElementById("bookCollection");
         for(let x of Object.values(getLocalStorage)){
             let bookNumber=`<div class="content" id=${x.BookID}>
             <div class="imageContainer">
@@ -14,9 +14,10 @@ function collectionBook(){
             </div>
         </div>`
 
-            bookCollectionDiv.insertAdjacentHTML("afterbegin",bookNumber)
+            bookCollection.insertAdjacentHTML("afterbegin",bookNumber)
         }
+    }else{
+        document.getElementById("bookCollection").innerHTML="no data available";
     }
 }
-// window.onload(collectionBook)
 collectionBook();
