@@ -24,12 +24,13 @@
         </div>
     </div>
 
+
+    <div class="pageMainButtons">
+        <button id="addBtn">Add New Book</button>
+        <input type="text" name="searchText" id="searchText" placeholder="Search ID">
+    </div>
+    <!-- <div class="bookManagementAlign"> -->
     <div id="formAlign">
-        <div class="pageMainButtons">
-            <button id="addBtn">Add New Book</button>
-            <input type="text" name="searchText" id="searchText">
-        </div>
-        <!-- <div class="bookManagementAlign"> -->
         <div class="formMain">
             <form id="BookingForm">
                 <fieldset>
@@ -56,7 +57,7 @@
                     </div>
                     <p class="Alert" id="authorAlert">Author Name is requierd</p>
 
-                    <div class="formContent">
+                    <!-- <div class="formContent">
                         <label for="category">Category:</label>
                         <input id="category" list="bookCategories">
                         <datalist id="bookCategories">
@@ -66,6 +67,18 @@
                             <option value="Horror">Horror</option>
                             <option value="History">History</option>
                         </datalist>
+                    </div> -->
+                    <div class="formContent">
+                        <label for="category">Category:</label>
+                        <!-- <input id="category" list="bookCategories"> -->
+                        <select id="category" aria-placeholder="select">select
+                            <option id="categoryEmpty" hidden  ></option>
+                            <option value="Eduction" >Eduction</option>
+                            <option value="Crime">Crime</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Horror">Horror</option>
+                            <option value="History">History</option>
+                        </select>
                     </div>
                     <p class="Alert" id="categoryAlert">Category Name is requierd</p>
 
@@ -107,28 +120,28 @@
             </form>
         </div>
     </div>
-        <div id="tableAlign">
-            <div id="tableDiv">
-                <table class="tableData">
-                    <thead class="tableHead">
-                        <th>Book ID</th>
-                        <th>Book Name</th>
-                        <th>Author</th>
-                        <th>Category</th>
-                        <th>Sub-Category</th>
-                        <th>Status</th>
-                        <th>Price</th>
-                        <th>Modification</th>
+    <div id="tableAlign">
+        <div id="tableDiv">
+            <table class="tableData">
+                <thead class="tableHead">
+                    <th>Book ID</th>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Sub-Category</th>
+                    <th>Status</th>
+                    <th>Price</th>
+                    <th>Modification</th>
 
-                    </thead>
-                    <tbody id="tableContent">
+                </thead>
+                <tbody id="tableContent">
 
-                        <td id="noData" colspan="8"></td>
-
-
+                    <td id="noData" colspan="8"></td>
 
 
-                        <!-- <tr>
+
+
+                    <!-- <tr>
                     <td>1234</td>
                     <td>abcd</td>
                     <td>looo</td>
@@ -145,10 +158,10 @@
                 </tr> -->
 
 
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
+    </div>
     </div>
     <div class="pageFooter">
         <div class="contactWebsite">

@@ -81,21 +81,25 @@ body {
 /* manage page */
 .pageMainButtons{
     margin:5px ;
-    text-align: center;
-    /* margin-right: 2.5%; */
+    display: flex;
+    /* text-align: right; */
+    justify-content: right;
+    margin-right: 2.5%;
     
 }
 #searchText{
     border-radius: 5px;
     padding: 10px 20px;
+    margin:5px ;
     font-size: 15px;
     border: none;
-    min-width:100px;
+    /* min-width:100px; */
 }
 #addBtn{
     background-color:  rgb(11, 78, 103);
     border-radius: 5px;
     padding: 10px 20px;
+    margin:5px ;
     font-size: 15px;
     color: rgba(255, 255, 255, 0.861);
     /* border: 1px solid black; */
@@ -173,12 +177,17 @@ fieldset {
     /* text-align: center; */
 }
 
-.formContent input {
+.formContent input[type="text"], .formContent select {
 
     border: 1px solid black;
     padding: 5px 10px;
     margin: 2px 5px;
     border-radius: 5px;
+    width: 60%;
+}
+.formContent select{
+    /* width:inherit; */
+    /* width: ; */
 }
 
 .formContent button {
@@ -294,4 +303,15 @@ tr:nth-child(even){
      .formMain {
         width: 90%;
     } 
+}
+@media  screen and (max-width: 300px){
+    #searchText {
+        width: 95%;
+     }
+     #searchBtn{
+        width: 100%;
+     }
+     .pageMainButtons{
+        flex-direction: column;
+     }
 }

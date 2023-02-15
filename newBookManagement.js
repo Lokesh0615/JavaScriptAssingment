@@ -4,12 +4,12 @@ let bookName = document.getElementById("bookName");
 let author = document.getElementById("author");
 let category = document.getElementById("category");
 let subCategory = document.querySelector("subCategory");
-let sts = document.querySelectorAll("input[name=status]");
+let sts = document.querySelectorAll("input[name='status']");
 
-
+console.log(category);
 let price = document.getElementById("price");
 
-let ipt = document.querySelectorAll("input, datalist");
+let ipt = document.querySelectorAll("input, select");
 
 // form
 let BookingForm = document.getElementById("BookingForm");
@@ -34,57 +34,118 @@ let searchText = document.getElementById("searchText");
 // searchBtn.addEventListener("click", searchData);
 // to check bookid input file is disabled or not
 var bookIDInputDisabled = 0;
-var sampleText="";
+var sampleText = "";
 // searchText.addEventListener("focusin", searchData);
 searchText.addEventListener("keyup", searchData);
+let searchDisplayEdit = false;
+searchText.addEventListener("keydown", searchData);
+// function searchData() {
+//     searchDisplayEdit=false;
+//     // let searchDisplayEdit=false;
+//     let searchDispaly=0;
+//     // for (let x of Object.values(getLocalStorage)) {
+//     //     if (x.BookID == searchText.value ) {
+//     //         document.getElementById(`tr-${x.BookID}`).style.display = "";
+//     //         addNewBookBtn.disabled = true;
+//     //         // searchText.value="";
+//     //         searchDispaly--;
+//     //     }
+//     //     else {
+//     //         document.getElementById(`tr-${x.BookID}`).style.display = "none";
 
-searchText.addEventListener("change", clearSearchFields);
-function searchData() {
-    // let searchDispaly=false;
-    let searchDispaly=0;
-    for (let x of Object.values(getLocalStorage)) {
-        if (x.BookID == searchText.value ) {
-            document.getElementById(`tr-${x.BookID}`).style.display = "";
-            addNewBookBtn.disabled = true;
-            // searchText.value="";
-            searchDispaly--;
-        }
-        else {
-            document.getElementById(`tr-${x.BookID}`).style.display = "none";
-           
-            searchDispaly++;
-           
-        }
-    }
-    // searchText.value="";
+//     //         searchDispaly++;
 
-    if (searchDispaly==getLocalStorage.length) {
-       
-        noData.style.display = "";
-        noData.innerHTML = "no data is available";
-    }else{
-        // addNewBookBtn.disabled = false;
-        noData.style.display = "none";
-        // noData.innerHTML = "no data is available";
-    }
-    // searchText.value = "";
-    // addNewBookBtn.disabled = true;
-    // document.querySelector("body").addEventListener("click", () => {
-    //     document.location.reload(true)
-    // })
+//     //     }
+//     // }
+//     // searchText.value="";
+//     for (let x of Object.values(getLocalStorage)) {
+//         if (x.BookID == searchText.value ) {
+//             document.getElementById(`tr-${x.BookID}`).style.display = "";
+//             addNewBookBtn.disabled = true;
+//             // searchText.value="";
+//             searchDispaly--;
+//             searchDisplayEdit=true;
+//             console.log("inside for loop1");
+//             console.log(searchDisplayEdit);
+//         }
+//         else {
+//             document.getElementById(`tr-${x.BookID}`).style.display = "none";
 
-}
+//             searchDispaly++;
+
+//         }
+//     }
+
+
+//     if (searchDispaly==getLocalStorage.length) {
+//         noData.style.display = "";
+//         noData.innerHTML = "no data is available";
+//         console.log("inside if loop1");
+//         console.log(searchDisplayEdit);
+//         if(!searchDisplayEdit){
+//             console.log("inside nestedif loop1");
+//             console.log(searchDisplayEdit);
+//             searchText.addEventListener("focusout", clearSearchFields);
+//         }
+
+
+//     }else {
+//         // addNewBookBtn.disabled = false;
+//         // searchText.addEventListener("change", clearSearchFields);
+
+//         noData.style.display = "none";
+//         // noData.innerHTML = "no data is available";
+//     }
+//     if(searchText.value==""){
+//         // searchText.addEventListener("dblclick", clearSearchFields);
+//         // clearSearchFields();
+//     }
+
+// }
+
 
 
 // let clearSearch = document.getElementById("clearSearch");
 // clearSearch.addEventListener("focus", clearSearchFields);
+searchText.addEventListener("change", () => {
+    if (document.getElementById("searchText").value == "") {
+        clearSearchFields();
+    }
+});
+
+function searchData() {
+    let tr = document.getElementsByTagName("tr");
+    // two tr are present in html file so,i starts from 2
+    for (let i = 2; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName("td")[0];
+        if (searchText.value == "") {
+            tr[i].style.display = "";
+        } else {
+            if ((td.innerHTML || td.innerText) == searchText.value) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+
+        }
+
+    }
+
+}
+// console.log(document.getElementsByTagName("tr"));
 function clearSearchFields() {
+    console.log("inside cleaefiled loop1");
+    // console.log(searchDisplayEdit);
+    // console.log(searchDisplayEdit);
+    // if(!searchDisplayEdit){
     for (let x of Object.values(getLocalStorage)) {
         document.getElementById(`tr-${x.BookID}`).style.display = "";
     }
     addNewBookBtn.disabled = false;
     noData.style.display = "none";
-     searchText.value="";
+    //  searchText.value="";
+    //  searchDisplayEdit=true;
+    // }
 };
 
 
@@ -127,7 +188,7 @@ let priceAlert = document.getElementById("priceAlert");
 bookID.addEventListener("keydown", ValidateChange);
 bookName.addEventListener("keydown", ValidateChange);
 author.addEventListener("keydown", ValidateChange);
-category.addEventListener("keydown", ValidateChange);
+category.addEventListener("change", ValidateChange);
 // sts.addEventListener("keydown", ValidateChange);
 price.addEventListener("keydown", ValidateChange);
 
@@ -351,7 +412,7 @@ function addBookToStorage(fbookID, fbookName, fauthor, fcategory, fun, fun1, fpr
                 localStorage.setItem("BookStore", JSON.stringify(bookStorage));
             }
         }
-        
+
 
     } else {
         bookStorage.push({
@@ -368,10 +429,6 @@ function addBookToStorage(fbookID, fbookName, fauthor, fcategory, fun, fun1, fpr
         });
         localStorage.setItem("BookStore", JSON.stringify(bookStorage));
     }
-    bookIDInputDisabled=0;
-
-
-
 }
 
 
@@ -419,8 +476,11 @@ function tableData() {
                     price.value = x.Price
                     document.getElementById("legendText").innerText = "Book Details Updation";
                     bookID.disabled = true;
+                    document.getElementById("Return").disabled=false;
                     bookIDInputDisabled = 1;
-                    sampleText=x.BookID;
+                    sampleText = x.BookID;
+                    // searchText.value="";
+                    // searchData()
                     disable()
                 });
 
@@ -434,6 +494,8 @@ function tableData() {
 
                     const tableRowDelete = this.parentElement.parentElement;
                     tableRowDelete.remove(dbtn);
+                    // searchText.value="";
+                    // searchData();
                     noDataAvailable();
                 });
             }
@@ -540,23 +602,34 @@ noDataAvailable();
 
 
 function hideForm(event) {
-    if (this == cancelBtn) {
-        document.getElementsByClassName("formMain")[0].style.display = "none";
-        bookIDInputDisabled=0;
-    }
-    ipt.forEach(x => {
-        if (x.id == "bookID" && bookIDInputDisabled==1) {
-            event.preventDefault();
-            x.value=sampleText;
-        } else {
+    if (this == (cancelBtn || submitBtn)) {
+        if (this == cancelBtn) {
+            document.getElementsByClassName("formMain")[0].style.display = "none";
+            bookIDInputDisabled = 0;
+            console.log("cancelbtn");
+        }
+        searchText.value = "";
+        searchData();
+        ipt.forEach(x => {
             x.value = "";
             x.style.borderColor = "black";
-        }
+        });
+    } else if(this == resetBtn){
+        ipt.forEach(x => {
+            if (x.id == "searchText") {
+                event.preventDefault();
+            } else if (x.id == "bookID" && bookIDInputDisabled == 1) {
+                event.preventDefault();
+                x.value = sampleText;
+            } else {
+                x.value = "";
+                x.style.borderColor = "black";
+            }
 
-    });
-    // if( bookIDInputDisabled==1){
-    //     bookIDInputDisabled=0;
-    // }
+        });
+    }else{
+        document.getElementById("Return").disabled=true;
+    }
     let clear = document.getElementsByClassName("clearChecked")
     for (let i of clear) {
         i.checked = false;
